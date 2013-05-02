@@ -114,7 +114,7 @@ $(function(){
 
         // back
         for (x=0;x<NEED_TILES_COUNT;x++) {
-            for (y=0;y<y_tiles;y++) {
+            for (y=0;y<NEED_TILES_COUNT;y++) {
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
