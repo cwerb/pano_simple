@@ -93,7 +93,9 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('left',NEED_TILES_COUNT-x-1,y_tiles-y-1) )
+                    map: THREE.ImageUtils.loadTexture( get_texture('left',NEED_TILES_COUNT-x-1,y_tiles-y-1),new THREE.UVMapping(),function(){
+                        renderer.render(scene, camera);
+                    })
                 });
 
                 var planeGeo = new THREE.PlaneGeometry(TILES_SIZE, TILES_SIZE, 1, 1);
