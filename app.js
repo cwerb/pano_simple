@@ -47,14 +47,13 @@ $(function(){
 
     function build_cube() {
         var x,y;
-        var y_tiles = PANO_HEIGHT/TILES_SIZE;
         // front
         for (x=0;x<NEED_TILES_COUNT;x++) {
-            for (y=0;y<y_tiles;y++) {
+            for (y=0;y<NEED_TILES_COUNT;y++) {
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('front',x,y_tiles-y-1),new THREE.UVMapping(),function(){
+                    map: THREE.ImageUtils.loadTexture( get_texture('front',x,NEED_TILES_COUNT-y-1),new THREE.UVMapping(),function(){
                     renderer.render(scene, camera);
                     })
                 });
@@ -63,7 +62,7 @@ $(function(){
                 var planeMat = new THREE.MeshLambertMaterial(material);
                 var plane = new THREE.Mesh(planeGeo, planeMat);
                 plane.position.x=x*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
-                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*y_tiles/2;
+                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.position.z=-TILES_SIZE*NEED_TILES_COUNT/2;
                 scene.add(plane);
             }
@@ -71,11 +70,11 @@ $(function(){
 
         // right
         for (x=0;x<NEED_TILES_COUNT;x++) {
-            for (y=0;y<y_tiles;y++) {
+            for (y=0;y<NEED_TILES_COUNT;y++) {
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('right',x,y_tiles-y-1) ,new THREE.UVMapping(),function(){
+                    map: THREE.ImageUtils.loadTexture( get_texture('right',x,NEED_TILES_COUNT-y-1) ,new THREE.UVMapping(),function(){
                         renderer.render(scene, camera);
                     })
                 });
@@ -84,7 +83,7 @@ $(function(){
                 var planeMat = new THREE.MeshLambertMaterial(material);
                 var plane = new THREE.Mesh(planeGeo, planeMat);
                 plane.position.z=x*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
-                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*y_tiles/2;
+                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.position.x=TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.rotation.y = -Math.PI/2;
                 scene.add(plane);
@@ -93,11 +92,11 @@ $(function(){
 
         // left
         for (x=0;x<NEED_TILES_COUNT;x++) {
-            for (y=0;y<y_tiles;y++) {
+            for (y=0;y<NEED_TILES_COUNT;y++) {
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('left',NEED_TILES_COUNT-x-1,y_tiles-y-1),new THREE.UVMapping(),function(){
+                    map: THREE.ImageUtils.loadTexture( get_texture('left',NEED_TILES_COUNT-x-1,NEED_TILES_COUNT-y-1),new THREE.UVMapping(),function(){
                         renderer.render(scene, camera);
                     })
                 });
@@ -106,7 +105,7 @@ $(function(){
                 var planeMat = new THREE.MeshLambertMaterial(material);
                 var plane = new THREE.Mesh(planeGeo, planeMat);
                 plane.position.z=x*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
-                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*y_tiles/2;
+                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.position.x=-TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.rotation.y = Math.PI/2;
                 scene.add(plane);
@@ -119,7 +118,7 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('back',NEED_TILES_COUNT-x-1,y_tiles-y-1) ,new THREE.UVMapping(),function(){
+                    map: THREE.ImageUtils.loadTexture( get_texture('back',NEED_TILES_COUNT-x-1,NEED_TILES_COUNT-y-1) ,new THREE.UVMapping(),function(){
                         renderer.render(scene, camera);
                     })
                 });
@@ -128,7 +127,7 @@ $(function(){
                 var planeMat = new THREE.MeshLambertMaterial(material);
                 var plane = new THREE.Mesh(planeGeo, planeMat);
                 plane.position.x=x*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
-                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*y_tiles/2;
+                plane.position.y=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.position.z=TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.rotation.y = -Math.PI;
                 scene.add(plane);
@@ -150,7 +149,7 @@ $(function(){
                 var planeMat = new THREE.MeshLambertMaterial(material);
                 var plane = new THREE.Mesh(planeGeo, planeMat);
                 plane.position.x=x*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
-                plane.position.z=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*y_tiles/2;
+                plane.position.z=y*TILES_SIZE+TILES_SIZE/2 - TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.position.y=TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.rotation.x = Math.PI/2;
                 scene.add(plane);
@@ -172,7 +171,7 @@ $(function(){
                 var planeMat = new THREE.MeshLambertMaterial(material);
                 var plane = new THREE.Mesh(planeGeo, planeMat);
                 plane.position.x=-x*TILES_SIZE-TILES_SIZE/2 + TILES_SIZE*NEED_TILES_COUNT/2;
-                plane.position.z=-y*TILES_SIZE-TILES_SIZE/2 + TILES_SIZE*y_tiles/2;
+                plane.position.z=-y*TILES_SIZE-TILES_SIZE/2 + TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.position.y=-TILES_SIZE*NEED_TILES_COUNT/2;
                 plane.rotation.x = -Math.PI/2;
                 //plane.rotation.z = Math.PI+0.1;
