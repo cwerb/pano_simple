@@ -54,7 +54,9 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('front',x,y_tiles-y-1) )
+                    map: THREE.ImageUtils.loadTexture( get_texture('front',x,y_tiles-y-1),new THREE.UVMapping(),function(){
+                    renderer.render(scene, camera);
+                    })
                 });
 
                 var planeGeo = new THREE.PlaneGeometry(TILES_SIZE, TILES_SIZE, 1, 1);
@@ -73,7 +75,9 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('right',x,y_tiles-y-1) )
+                    map: THREE.ImageUtils.loadTexture( get_texture('right',x,y_tiles-y-1) ,new THREE.UVMapping(),function(){
+                        renderer.render(scene, camera);
+                    })
                 });
 
                 var planeGeo = new THREE.PlaneGeometry(TILES_SIZE, TILES_SIZE, 1, 1);
@@ -115,7 +119,9 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('back',NEED_TILES_COUNT-x-1,y_tiles-y-1) )
+                    map: THREE.ImageUtils.loadTexture( get_texture('back',NEED_TILES_COUNT-x-1,y_tiles-y-1) ,new THREE.UVMapping(),function(){
+                        renderer.render(scene, camera);
+                    })
                 });
 
                 var planeGeo = new THREE.PlaneGeometry(TILES_SIZE, TILES_SIZE, 1, 1);
@@ -135,7 +141,9 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('top',x,NEED_TILES_COUNT-y-1) )
+                    map: THREE.ImageUtils.loadTexture( get_texture('top',x,NEED_TILES_COUNT-y-1) ,new THREE.UVMapping(),function(){
+                        renderer.render(scene, camera);
+                    })
                 });
 
                 var planeGeo = new THREE.PlaneGeometry(TILES_SIZE, TILES_SIZE, 1, 1);
@@ -155,7 +163,9 @@ $(function(){
 
                 // material
                 var material = new THREE.MeshLambertMaterial({
-                    map: THREE.ImageUtils.loadTexture( get_texture('bottom',NEED_TILES_COUNT-x-1,NEED_TILES_COUNT-y-1) )
+                    map: THREE.ImageUtils.loadTexture( get_texture('bottom',NEED_TILES_COUNT-x-1,NEED_TILES_COUNT-y-1) ,new THREE.UVMapping(),function(){
+                        renderer.render(scene, camera);
+                    })
                 });
 
                 var planeGeo = new THREE.PlaneGeometry(TILES_SIZE, TILES_SIZE, 1, 1);
